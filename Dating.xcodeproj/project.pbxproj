@@ -56,15 +56,31 @@
 		00766C73254383AF00ED8567 /* Dating */ = {
 			isa = PBXGroup;
 			children = (
-				00766C74254383AF00ED8567 /* AppDelegate.swift */,
-				00766C76254383AF00ED8567 /* SceneDelegate.swift */,
+				00766C8C2543841F00ED8567 /* Storyboards */,
+				00766C8B254383F900ED8567 /* Support Files */,
 				00766C78254383AF00ED8567 /* ViewController.swift */,
-				00766C7A254383AF00ED8567 /* Main.storyboard */,
-				00766C7D254383B000ED8567 /* Assets.xcassets */,
-				00766C7F254383B000ED8567 /* LaunchScreen.storyboard */,
-				00766C82254383B000ED8567 /* Info.plist */,
 			);
 			path = Dating;
+			sourceTree = "<group>";
+		};
+		00766C8B254383F900ED8567 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				00766C74254383AF00ED8567 /* AppDelegate.swift */,
+				00766C76254383AF00ED8567 /* SceneDelegate.swift */,
+				00766C7D254383B000ED8567 /* Assets.xcassets */,
+				00766C82254383B000ED8567 /* Info.plist */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		00766C8C2543841F00ED8567 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				00766C7A254383AF00ED8567 /* Main.storyboard */,
+				00766C7F254383B000ED8567 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,6 +93,7 @@
 				00766C6D254383AF00ED8567 /* Sources */,
 				00766C6E254383AF00ED8567 /* Frameworks */,
 				00766C6F254383AF00ED8567 /* Resources */,
+				00766C8A254383CD00ED8567 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -131,6 +148,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00766C8A254383CD00ED8567 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"error: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n  exit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		00766C6D254383AF00ED8567 /* Sources */ = {
@@ -288,7 +325,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VX327H4378;
-				INFOPLIST_FILE = Dating/Info.plist;
+				INFOPLIST_FILE = "Dating/Support Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,7 +345,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VX327H4378;
-				INFOPLIST_FILE = Dating/Info.plist;
+				INFOPLIST_FILE = "Dating/Support Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
