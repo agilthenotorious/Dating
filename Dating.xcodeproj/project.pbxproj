@@ -7,19 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00475CA62547EA9F00A205BC /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00475CA52547EA9F00A205BC /* CustomError.swift */; };
+		00475CAC2547EBAB00A205BC /* DatingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00475CAB2547EBAB00A205BC /* DatingViewModel.swift */; };
+		00475CB22547ED8600A205BC /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00475CB12547ED8600A205BC /* SwipeView.swift */; };
+		0049D7E425452EF50085C87C /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049D7E325452EF50085C87C /* ApiResponse.swift */; };
+		0049D7ED2545382B0085C87C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049D7EC2545382B0085C87C /* NetworkManager.swift */; };
+		004B64E72546038C00B4A19D /* ReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004B64E62546038C00B4A19D /* ReusableView.xib */; };
+		004B64EA2546040E00B4A19D /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004B64E92546040E00B4A19D /* ReusableView.swift */; };
+		004B64ED25460B3000B4A19D /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004B64EC25460B3000B4A19D /* UIView+Ext.swift */; };
+		004B64F225467B7E00B4A19D /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004B64F125467B7E00B4A19D /* ReusableViewProtocol.swift */; };
 		00766C75254383AF00ED8567 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00766C74254383AF00ED8567 /* AppDelegate.swift */; };
 		00766C77254383AF00ED8567 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00766C76254383AF00ED8567 /* SceneDelegate.swift */; };
-		00766C79254383AF00ED8567 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00766C78254383AF00ED8567 /* ViewController.swift */; };
+		00766C79254383AF00ED8567 /* DatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00766C78254383AF00ED8567 /* DatingViewController.swift */; };
 		00766C7C254383AF00ED8567 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00766C7A254383AF00ED8567 /* Main.storyboard */; };
 		00766C7E254383B000ED8567 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00766C7D254383B000ED8567 /* Assets.xcassets */; };
 		00766C81254383B000ED8567 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00766C7F254383B000ED8567 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00475CA52547EA9F00A205BC /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
+		00475CAB2547EBAB00A205BC /* DatingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatingViewModel.swift; sourceTree = "<group>"; };
+		00475CB12547ED8600A205BC /* SwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
+		0049D7E325452EF50085C87C /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
+		0049D7EC2545382B0085C87C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		004B64E62546038C00B4A19D /* ReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReusableView.xib; sourceTree = "<group>"; };
+		004B64E92546040E00B4A19D /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		004B64EC25460B3000B4A19D /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		004B64F125467B7E00B4A19D /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
 		00766C71254383AF00ED8567 /* Dating.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dating.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00766C74254383AF00ED8567 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00766C76254383AF00ED8567 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		00766C78254383AF00ED8567 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		00766C78254383AF00ED8567 /* DatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatingViewController.swift; sourceTree = "<group>"; };
 		00766C7B254383AF00ED8567 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		00766C7D254383B000ED8567 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		00766C80254383B000ED8567 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -37,6 +55,110 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00475CAF2547ED5C00A205BC /* SwipeView */ = {
+			isa = PBXGroup;
+			children = (
+				00475CB12547ED8600A205BC /* SwipeView.swift */,
+			);
+			path = SwipeView;
+			sourceTree = "<group>";
+		};
+		00475CB02547ED6300A205BC /* ReusableView */ = {
+			isa = PBXGroup;
+			children = (
+				004B64E62546038C00B4A19D /* ReusableView.xib */,
+				004B64E92546040E00B4A19D /* ReusableView.swift */,
+			);
+			path = ReusableView;
+			sourceTree = "<group>";
+		};
+		00475CB52547EE1500A205BC /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				00766C78254383AF00ED8567 /* DatingViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		00475CBB25481E9400A205BC /* CustomError */ = {
+			isa = PBXGroup;
+			children = (
+				00475CA52547EA9F00A205BC /* CustomError.swift */,
+			);
+			path = CustomError;
+			sourceTree = "<group>";
+		};
+		0049D7DE25452E350085C87C /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				0049D7DF25452E8B0085C87C /* Main Screen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		0049D7DF25452E8B0085C87C /* Main Screen */ = {
+			isa = PBXGroup;
+			children = (
+				0049D7E225452E9D0085C87C /* Model */,
+				0049D7E125452E980085C87C /* View */,
+				0049D7E025452E920085C87C /* ViewModel */,
+			);
+			path = "Main Screen";
+			sourceTree = "<group>";
+		};
+		0049D7E025452E920085C87C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				00475CAB2547EBAB00A205BC /* DatingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0049D7E125452E980085C87C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				00475CB52547EE1500A205BC /* ViewController */,
+				00475CB02547ED6300A205BC /* ReusableView */,
+				00475CAF2547ED5C00A205BC /* SwipeView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0049D7E225452E9D0085C87C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0049D7E325452EF50085C87C /* ApiResponse.swift */,
+				004B64F125467B7E00B4A19D /* ReusableViewProtocol.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0049D7E6254537450085C87C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				004B64EC25460B3000B4A19D /* UIView+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0049D7EA254537990085C87C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				00475CBB25481E9400A205BC /* CustomError */,
+				0049D7E6254537450085C87C /* Extensions */,
+				0049D7EB2545379E0085C87C /* Network Layer */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		0049D7EB2545379E0085C87C /* Network Layer */ = {
+			isa = PBXGroup;
+			children = (
+				0049D7EC2545382B0085C87C /* NetworkManager.swift */,
+			);
+			path = "Network Layer";
+			sourceTree = "<group>";
+		};
 		00766C68254383AF00ED8567 = {
 			isa = PBXGroup;
 			children = (
@@ -56,9 +178,10 @@
 		00766C73254383AF00ED8567 /* Dating */ = {
 			isa = PBXGroup;
 			children = (
+				0049D7EA254537990085C87C /* Utilities */,
+				0049D7DE25452E350085C87C /* Screens */,
 				00766C8C2543841F00ED8567 /* Storyboards */,
 				00766C8B254383F900ED8567 /* Support Files */,
-				00766C78254383AF00ED8567 /* ViewController.swift */,
 			);
 			path = Dating;
 			sourceTree = "<group>";
@@ -66,9 +189,9 @@
 		00766C8B254383F900ED8567 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				00766C7D254383B000ED8567 /* Assets.xcassets */,
 				00766C74254383AF00ED8567 /* AppDelegate.swift */,
 				00766C76254383AF00ED8567 /* SceneDelegate.swift */,
-				00766C7D254383B000ED8567 /* Assets.xcassets */,
 				00766C82254383B000ED8567 /* Info.plist */,
 			);
 			path = "Support Files";
@@ -142,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00766C81254383B000ED8567 /* LaunchScreen.storyboard in Resources */,
+				004B64E72546038C00B4A19D /* ReusableView.xib in Resources */,
 				00766C7E254383B000ED8567 /* Assets.xcassets in Resources */,
 				00766C7C254383AF00ED8567 /* Main.storyboard in Resources */,
 			);
@@ -174,8 +298,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00766C79254383AF00ED8567 /* ViewController.swift in Sources */,
+				004B64ED25460B3000B4A19D /* UIView+Ext.swift in Sources */,
+				0049D7ED2545382B0085C87C /* NetworkManager.swift in Sources */,
+				004B64F225467B7E00B4A19D /* ReusableViewProtocol.swift in Sources */,
+				00766C79254383AF00ED8567 /* DatingViewController.swift in Sources */,
+				00475CA62547EA9F00A205BC /* CustomError.swift in Sources */,
+				00475CAC2547EBAB00A205BC /* DatingViewModel.swift in Sources */,
 				00766C75254383AF00ED8567 /* AppDelegate.swift in Sources */,
+				0049D7E425452EF50085C87C /* ApiResponse.swift in Sources */,
+				00475CB22547ED8600A205BC /* SwipeView.swift in Sources */,
+				004B64EA2546040E00B4A19D /* ReusableView.swift in Sources */,
 				00766C77254383AF00ED8567 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
