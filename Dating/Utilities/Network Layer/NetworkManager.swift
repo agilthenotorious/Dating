@@ -9,18 +9,22 @@ import UIKit
 
 class NetworkManager {
     
-    // MARK: Singleton pattern
+    // MARK: - Properties
+    
+    // Singleton pattern
     static let manager = NetworkManager()
     private let cache = NSCache<NSString, UIImage>()
     
+    // MARK: - Inits
+    
     private init() { }
     
-    // MARK: URL Session to get data from server
+    // MARK: - URL Session to get data from server
     
     // swiftlint:disable:next variable_name
     func request<T: Decodable>(_ t: T.Type, completion: @escaping (Result<T, CustomError>) -> Void) {
-        
         guard let url = URL(string: "https://randomuser.me/api/?results=100") else { return }
+        
         URLSession.shared.dataTask(with: url) { data, response, _ in
             guard let data = data,
                   let response = response as? HTTPURLResponse,
@@ -36,6 +40,8 @@ class NetworkManager {
             }
         }.resume()
     }
+    
+    // MARK: - Download Image
     
     func downloadImage(with urlString: String, completion: @escaping (Result<UIImage?, CustomError>) -> Void) {
     

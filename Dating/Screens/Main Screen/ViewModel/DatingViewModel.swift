@@ -9,7 +9,7 @@ import UIKit
 
 protocol DatingViewModelDelegate: AnyObject {
     func failed(error: CustomError)
-    func addCardToContainer(card: ReusableView, at index: Int)
+    func addCardToContainer(card: SwipeCardView, at index: Int)
 }
 
 class DatingViewModel {
@@ -21,46 +21,34 @@ class DatingViewModel {
     private let numberOfVisibleCards: Int = 3
     private let containerViewBounds: CGRect
     
-    private var users: [Person] = []
-    private var cardViews: [ReusableView] = []
+    private var cardViews: [SwipeCardView] = []
+    private var personList: [Person] = []
     private var usersInContainer: [Person] = []
-    //private var connectsList: [Person] = []
+    private var favouritesList: [Person] = []
     
     weak var viewModelDelegate: DatingViewModelDelegate?
     
     // MARK: - Inits
 
     required init(viewModelDelegate: DatingViewModelDelegate, containerViewBounds: CGRect) {
-        
         self.viewModelDelegate = viewModelDelegate
         self.containerViewBounds = containerViewBounds
         loadUsers()
     }
     
-    // MARK: - Model Methods
-    
-    func initContainerViewCards(with users: [Person]) {
-        
-        self.users = users
-        for _ in 0..<numberOfVisibleCards {
-            insertNewCard()
-        }
-    }
-    /*
-    func getConnects() -> [Person] {
-        return connectsList
-    }*/
-    
-    // MARK: - Private Methods
+    // MARK: - Methods
     
     private func loadUsers() {
-        
         NetworkManager.manager.request(ApiResponse.self) { result in
             switch result {
             case .success(let response):
-                let users = response.results
-                self.users = users
-                self.initContainerViewCards(with: users)
+                if !response.results.isEmpty {
+                    let people = response.results
+                    self.personList = people
+                    self.initContainerViewCards(with: people)
+                } else {
+                    self.viewModelDelegate?.failed(error: CustomError.noUsersFound)
+                }
                 
             case .failure(let error):
                 self.viewModelDelegate?.failed(error: error)
@@ -68,42 +56,44 @@ class DatingViewModel {
         }
     }
     
+    func initContainerViewCards(with people: [Person]) {
+        self.personList = people
+        for _ in 0..<numberOfVisibleCards {
+            insertNewCard()
+        }
+    }
+    
     private func insertNewCard() {
-        
-        guard !users.isEmpty else { return }
-        let user = users.removeLast()
-        if let card = createUserCardView(with: user) {
+        guard !personList.isEmpty else { return }
+        let person = personList.removeLast()
+        if let card = createPersonCardView(with: person) {
             viewModelDelegate?.addCardToContainer(card: card, at: 0)
         }
         updateFrames()
     }
     
-    private func createUserCardView(with user: Person) -> ReusableView? {
-        
-        let imageUrl = user.picture.large
+    private func createPersonCardView(with person: Person) -> ReusableView? {
         let card = ReusableView()
-        card.setInfo(name: user.fullName, age: user.age, imageUrl: imageUrl)
+        card.setInfo(person: person)
         card.delegate = self
         cardViews.append(card)
-        usersInContainer.append(user)
+        usersInContainer.append(person)
         return card
     }
     
-    private func setFrame(for cardView: ReusableView, at index: Int) -> ReusableView? {
-        
+    private func setFrame(for cardView: SwipeCardView, at index: Int) -> SwipeCardView? {
         var cardViewFrame = containerViewBounds
         let verticalInset = CGFloat(index) * self.verticalInset
         let horizontalInset = (CGFloat(index) * self.horizontalInset)
         
         cardViewFrame.origin.y += verticalInset
-        cardViewFrame.origin.x += (horizontalInset - self.horizontalInset)
+        cardViewFrame.origin.x += horizontalInset
         cardViewFrame.size.width -= 2 * horizontalInset
         cardView.frame = cardViewFrame
         return cardView
     }
     
     private func updateFrames() {
-        
         for (index, card) in cardViews.enumerated() {
             if let card = setFrame(for: card, at: index) {
                 cardViews[index] = card
@@ -117,33 +107,35 @@ class DatingViewModel {
 extension DatingViewModel: SwipeViewDelegate {
     
     func didSwipeLeft(on view: SwipeView) {
-        
-        cardViews.removeFirst()
+        let card = cardViews.removeFirst()
         usersInContainer.removeFirst()
         insertNewCard()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            card.removeFromSuperview()
+        }
     }
     
     func didSwipeRight(on view: SwipeView) {
-        
-        cardViews.removeFirst()
-        // ************** Append to favourites here ********************
-        //let user = usersInContainer.removeFirst()
-        //connectsList.append(user)
+        let card = cardViews.removeFirst()
+        let user = usersInContainer.removeFirst()
+        favouritesList.append(user)
         insertNewCard()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            card.removeFromSuperview()
+        }
     }
 }
-/*
-// MARK: - ConnectsDataSource
 
-extension DatingViewModel: ConnectsDataSource {
+// MARK: - FavouritesDataSource
+
+extension DatingViewModel: FavouritesDataSource {
     
-    func getConnectsCount() -> Int {
-        return connectsList.count
+    func getFavouritesCount() -> Int {
+        return favouritesList.count
     }
     
-    func getConnect(at index: Int) -> User? {
-        guard index < connectsList.count else { return nil }
-        return connectsList[index]
+    func getFavourite(at index: Int) -> Person? {
+        guard index < favouritesList.count else { return nil }
+        return favouritesList[index]
     }
 }
-*/

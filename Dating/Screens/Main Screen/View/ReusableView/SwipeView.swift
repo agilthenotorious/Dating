@@ -56,7 +56,6 @@ class SwipeView: UIView {
     // MARK: - Methods
     
     private func setupGestureRecognizers() {
-        
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognized))
         self.panGestureRecognizer = panGestureRecognizer
         addGestureRecognizer(panGestureRecognizer)

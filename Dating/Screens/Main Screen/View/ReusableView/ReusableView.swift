@@ -12,38 +12,18 @@ class ReusableView: SwipeCardView {
     // MARK: - IBOutlets
     
     @IBOutlet private weak var cardView: UIView!
-    @IBOutlet weak private var nameLabel: UILabel!
-    @IBOutlet weak private var ageLabel: UILabel!
-    @IBOutlet private weak var personImage: UIImageView! {
-        didSet {
-            self.personImage.layer.cornerRadius = 40 //self.personImage.frame.height/2
-        }
-    }
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var ageLabel: UILabel!
+    @IBOutlet private weak var tabBar: UITabBar!
+    @IBOutlet private weak var personImage: UIImageView!
     @IBOutlet private weak var infoLabel: UILabel!
-    
-    // MARK: IBActions
-    
-    @IBAction private func genderButton(_ sender: UIButton) {
-        self.infoLabel.text = "Gender: "
-    }
-    @IBAction private func addressButton(_ sender: UIButton) {
-        self.infoLabel.text = "Address: "
-    }
-    @IBAction private func emailButton(_ sender: UIButton) {
-        self.infoLabel.text = "Email: "
-    }
-    @IBAction private func phoneButton(_ sender: UIButton) {
-        self.infoLabel.text = "Phone Number: "
-    }
-    @IBAction private func lockButton(_ sender: UIButton) {
-        self.infoLabel.text = "You do not have the premium access.\nPlease navigate to payments screen."
-    }
     
     // MARK: - Properties
     
     private weak var shadowView: UIView?
+    private var person: Person?
     
-    // MARK: - Initializers
+    // MARK: - Inits
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -62,6 +42,17 @@ class ReusableView: SwipeCardView {
         addSubview(cardView)
         cardView.frame = bounds
         cardView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        cardView.layer.cornerRadius = 20
+        
+        personImage.layer.cornerRadius = personImage.bounds.height / 4
+        personImage.layer.borderWidth = 0.4
+        personImage.layer.borderColor = UIColor.black.cgColor
+        
+        tabBar.delegate = self
+        if let tabBarItems = tabBar.items {
+            let item = tabBarItems[0]
+            tabBar.selectedItem = item
+        }
     }
     
     // MARK: - Methods
@@ -72,12 +63,10 @@ class ReusableView: SwipeCardView {
         shadowView = addShadow(to: cardView)
     }
     
-    func setInfo(name: String, age: String, imageUrl: String) {
+    func setInfo(person: Person) {
+        self.person = person
         
-        nameLabel.text = name
-        ageLabel.text = age
-        
-        NetworkManager.manager.downloadImage(with: imageUrl) { results in
+        NetworkManager.manager.downloadImage(with: person.picture.large) { results in
             switch results {
             case .success(let image):
                 DispatchQueue.main.async {
@@ -85,8 +74,42 @@ class ReusableView: SwipeCardView {
                 }
                 
             case .failure(let error):
-                print(error.localizedDescription, " with image url ", imageUrl)
+                print(error.localizedDescription)
             }
+        }
+        
+        nameLabel.text = person.fullName
+        ageLabel.text = person.age
+        infoLabel.text = person.gender.rawValue
+    }
+}
+
+// MARK: - UITabBarDelegate
+
+extension ReusableView: UITabBarDelegate {
+
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        guard let person = self.person else { return }
+        
+        switch item.tag {
+        case 0:
+            infoLabel.text = person.gender.rawValue
+
+        case 1:
+            let location = person.location.city + ", " + person.location.state + "\n" + person.location.country.rawValue
+            infoLabel.text = location
+
+        case 2:
+            infoLabel.text = person.email
+
+        case 3:
+            infoLabel.text = person.phone + "\n" + person.cell
+
+        case 4:
+            infoLabel.text = "You do not have the premium access.\nPlease navigate to payments screen."
+
+        default:
+            break
         }
     }
 }

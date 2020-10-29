@@ -8,12 +8,24 @@
 import UIKit
 
 class DatingViewController: UIViewController {
+    
+    // MARK: - IBOutlets
 
     @IBOutlet private weak var sampleView: UIView!
     
     // MARK: - Properties
 
     var viewModel: DatingViewModel?
+    
+    // MARK: - IBActions
+    
+    @IBAction private func navigateToFavourites() {
+        if let favouritesTVC = storyboard?.instantiateViewController(withIdentifier: FavouritesTableViewController.identifier) as? FavouritesTableViewController {
+                    
+            favouritesTVC.datingViewModel = self.viewModel
+            self.show(favouritesTVC, sender: nil)
+        }
+    }
     
     // MARK: - Methods
 
@@ -33,7 +45,16 @@ class DatingViewController: UIViewController {
 
 extension DatingViewController: DatingViewModelDelegate {
     
-    func addCardToContainer(card: ReusableView, at index: Int) {
+    func addCardToContainer(card: SwipeCardView, at index: Int) {
+        var cardViewFrame = sampleView.bounds
+        let verticalInset = CGFloat(index) * CGFloat(14)
+        let horizontalInset = (CGFloat(index) * CGFloat(14))
+
+        cardViewFrame.origin.y += verticalInset
+        cardViewFrame.origin.x += horizontalInset
+        cardViewFrame.size.width -= 2 * horizontalInset
+        card.frame = cardViewFrame
+
         sampleView.insertSubview(card, at: index)
     }
     

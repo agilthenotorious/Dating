@@ -7,7 +7,7 @@
 
 // swiftlint:disable identifier_name
 
-// MARK: - Welcome
+// MARK: - ApiResponse
 struct ApiResponse: Codable {
     let results: [Person]
     let info: Info
@@ -22,7 +22,6 @@ struct Info: Codable {
 
 // MARK: - Result
 struct Person: Codable {
-    
     let name: NameClass
     let dob: Dob
     let location: Location
